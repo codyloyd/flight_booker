@@ -5,3 +5,20 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Airport.delete_all
+Flight.delete_all
+
+airports = Airport.create([{code: 'SFO'},
+             {code: 'NYC'},
+             {code: 'LAS'},
+             {code: 'SUN'},
+             {code: 'SPF'},
+             {code: 'JFK'},
+             {code: 'GRB'}])
+
+airports.each do |from|
+  airports.each do |to|
+    Flight.create(from:from, to:to) unless from == to
+  end
+end

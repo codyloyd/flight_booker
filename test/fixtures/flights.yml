@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from: 1
+  to: 1
+  start: 2016-07-09 07:38:24
+  flight: 
+
+two:
+  from: 1
+  to: 1
+  start: 2016-07-09 07:38:24
+  flight: 
