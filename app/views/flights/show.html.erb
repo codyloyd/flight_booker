@@ -1,0 +1,11 @@
+<h1>FLIGHT <%= @flight.id %></h1>
+<h3>From <%= @flight.from.code %> to <%= @flight.to.code %> on <%= @flight.start.strftime("%B %e") %></h3>
+
+<h2>passengers:</h2>
+<ul>
+  <% @passengers.each do |passenger|%>
+  <li><%= passenger.name %></li>
+  <% end %>
+</ul>
+
+<%= link_to "HOME", root_url %>

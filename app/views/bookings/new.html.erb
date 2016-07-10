@@ -1,0 +1,13 @@
+<h1>Booking</h1>
+<h3>create booking for flight <%= @flight.id %></h3>
+<h3>From <%= @flight.from.code %> to <%= @flight.to.code %> on <%= @flight.start.strftime("%B %e") %></h3>
+
+<h1>Enter Passenger Information:</h1>
+<%= form_tag "/bookings" do %>
+  <% @passengers.times do |i| %>
+    <%= text_field_tag "passenger-#{i}" %>
+  <% end %>
+  <%= hidden_field_tag "flight", @flight.id %>
+  <%= hidden_field_tag "passenger_count", @passengers%>
+  <%= submit_tag "Book Flights" %>
+<% end %>

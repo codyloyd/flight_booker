@@ -9,4 +9,9 @@ class FlightsController < ApplicationController
     @passengers = params[:passengers]
   end
 
+  def show
+    @flight = Flight.find(params[:id])
+    @passengers = @flight.passengers
+  end
+
 end

@@ -10,7 +10,7 @@
 <% if params[:commit] %>
 
 <h1>search results:</h1>
-<%= form_tag do  %>
+<%= form_tag("/bookings/new", method: "get") do  %>
 <table>
   <tr>
     <th>From</th>
@@ -40,11 +40,16 @@
 <h1>all flights:</h1>
 <table>
   <tr>
+    <th>ID</th>
     <th>From</th>
     <th>To</th>
     <th>Departure</th>
+    <th>Passengers</th>
     <% @flights.each do |flight| %>
     <tr>
+      <td>
+        <%= link_to flight.id, flight %>
+      </td>
       <td>
         <%=  flight.from.code %>
       </td>
@@ -53,6 +58,9 @@
       </td>
       <td>
         <%=  flight.start.strftime("%e %b %Y, %l:%M %P") %>
+      </td>
+      <td>
+        <%= flight.passengers.count %>
       </td>
     </tr>
     <% end %>
