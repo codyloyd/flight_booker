@@ -8,4 +8,12 @@
   <% end %>
 </ul>
 
+<h2>book this flight?</h2>
+<h3>how many passengers?</h3>
+<%= form_tag("/bookings/new", method: "get") do %>
+  <%= select_tag(:passengers, "<option>1</option><option>2</option><option>3</option><option>4</option>".html_safe) %>
+  <%= hidden_field_tag "flight", @flight.id %>
+  <%= submit_tag "Book Flight" %>
+<% end %>
+
 <%= link_to "HOME", root_url %>

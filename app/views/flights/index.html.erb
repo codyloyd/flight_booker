@@ -3,7 +3,6 @@
   <%= select_tag(:from, options_for_select(@airports)) %>
   <%= select_tag(:to, options_for_select(@airports)) %>
   <%= select_tag(:passengers, "<option>1</option><option>2</option><option>3</option><option>4</option>".html_safe) %>
-  <!-- <%= select_tag(:date, options_for_select(@available_dates)) %> -->
   <%= submit_tag "Search Flights" %>
 <% end %>
 
