@@ -19,6 +19,8 @@ airports = Airport.create([{code: 'SFO'},
 
 airports.each do |from|
   airports.each do |to|
-    Flight.create(from:from, to:to) unless from == to
+    4.times do
+      Flight.create(from:from, to:to, start:(Time.now + rand(200).days+ rand(100000))) unless from == to
+    end
   end
 end
