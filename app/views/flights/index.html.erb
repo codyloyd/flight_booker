@@ -1,67 +1,11 @@
 <h1>flight booking</h1>
-<%= form_tag("/", method: "get") do%>
+<%= form_tag("/", method: "get", id: "searchform") do%>
   <%= select_tag(:from, options_for_select(@airports)) %>
   <%= select_tag(:to, options_for_select(@airports)) %>
   <%= select_tag(:passengers, "<option>1</option><option>2</option><option>3</option><option>4</option>".html_safe) %>
   <%= submit_tag "Search Flights" %>
 <% end %>
 
-<% if params[:commit] %>
-
-<h1>search results:</h1>
-<%= form_tag("/bookings/new", method: "get") do  %>
-<table>
-  <tr>
-    <th>From</th>
-    <th>To</th>
-    <th>Departure</th>
-    <% @search_results.each do |flight| %>
-    <tr>
-      <td>
-        <%=  flight.from.code %>
-      </td>
-      <td>
-        <%=  flight.to.code %>
-      </td>
-      <td>
-        <%=  flight.start.strftime("%e %b %Y, %l:%M %P") %>
-      </td>
-      <td>
-        <%= radio_button_tag :flight, flight.id %>
-      </td>
-    </tr>
-    <% end %>
-  </table>
-  <%= hidden_field_tag "passengers", @passengers %>
-  <%= submit_tag "Select Flight" %>
-<% end %>
-<% else %>
-<h1>all flights:</h1>
-<table>
-  <tr>
-    <th>ID</th>
-    <th>From</th>
-    <th>To</th>
-    <th>Departure</th>
-    <th>Passengers</th>
-    <% @flights.each do |flight| %>
-    <tr>
-      <td>
-        <%= link_to flight.id, flight %>
-      </td>
-      <td>
-        <%=  flight.from.code %>
-      </td>
-      <td>
-        <%=  flight.to.code %>
-      </td>
-      <td>
-        <%=  flight.start.strftime("%e %b %Y, %l:%M %P") %>
-      </td>
-      <td>
-        <%= flight.passengers.count %>
-      </td>
-    </tr>
-    <% end %>
-  </table>
-  <% end %>
+<div id="flights">
+  <%= render "flight_table" %>
+</div>
